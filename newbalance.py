@@ -1,8 +1,6 @@
 import requests
-import threading
 import time
 import lxml
-import logging
 from bs4 import BeautifulSoup
 from discord_webhook import DiscordWebhook, DiscordEmbed
                     
@@ -71,15 +69,15 @@ ATC_DATA = {
 }
 
 SHIPPING_SCRAPE_DATA = {
-    "firstName": "Benjamin",
-    "lastName": "Sturisky",
-    "address1": "315 Forest Hills drive",
+    "firstName": "",
+    "lastName": "",
+    "address1": "",
     "address2": "",
-    "city": "Atlanta",
-    "postalCode": "30342",
-    "stateCode": "GA",
-    "countryCode": "US",
-    "phone": "404-314-8199",
+    "city": "",
+    "postalCode": "",
+    "stateCode": "",
+    "countryCode": "",
+    "phone": "",
     "shipmentUUID": "",
 }
 
@@ -149,17 +147,17 @@ def task(num):
     'shipmentUUID': SHIPMENT_SCRAPE_UUID,
     'zipCodeErrorMsg': 'Please enter a valid Zip/Postal code',
     "shipmentSelector": "new",
-    'dwfrm_shipping_shippingAddress_addressFields_country': 'US',
-    'dwfrm_shipping_shippingAddress_addressFields_firstName': 'Benjamin',
-    'dwfrm_shipping_shippingAddress_addressFields_lastName': 'Sturisky',
-    'dwfrm_shipping_shippingAddress_addressFields_address1': '315 Forest Hills drive',
+    'dwfrm_shipping_shippingAddress_addressFields_country': '',
+    'dwfrm_shipping_shippingAddress_addressFields_firstName': '',
+    'dwfrm_shipping_shippingAddress_addressFields_lastName': '',
+    'dwfrm_shipping_shippingAddress_addressFields_address1': '',
     'dwfrm_shipping_shippingAddress_addressFields_address2': '',
-    'dwfrm_shipping_shippingAddress_addressFields_city': 'Atlanta',
-    'dwfrm_shipping_shippingAddress_addressFields_states_stateCode': 'GA',
-    'dwfrm_shipping_shippingAddress_addressFields_postalCode': '30342',
-    'dwfrm_shipping_shippingAddress_addressFields_phone': '404-314-8199',
-    'dwfrm_shipping_shippingAddress_addressFields_email': 'bsutrisky18@gmail.com',
-    'dwfrm_shipping_shippingAddress_addressFields_addtoemaillist': 'true',
+    'dwfrm_shipping_shippingAddress_addressFields_city': '',
+    'dwfrm_shipping_shippingAddress_addressFields_states_stateCode': '',
+    'dwfrm_shipping_shippingAddress_addressFields_postalCode': '',
+    'dwfrm_shipping_shippingAddress_addressFields_phone': '',
+    'dwfrm_shipping_shippingAddress_addressFields_email': '',
+    'dwfrm_shipping_shippingAddress_addressFields_addtoemaillist': '',
     'csrf_token': TOKEN,
     'saveShippingAddr': 'false',
 }
@@ -178,30 +176,30 @@ def task(num):
         "csrf_token":TOKEN,
         "localizedNewAddressTitle": "New Address",
         "dwfrm_billing_paymentMethod": "CREDIT_CARD",
-        "dwfrm_billing_creditCardFields_cardNumber": "4388540071111",
-        "dwfrm_billing_creditCardFields_expirationMonth": "6",
-        "dwfrm_billing_creditCardFields_expirationYear": "2021",
-        "dwfrm_billing_creditCardFields_securityCode": "222",
-        "dwfrm_billing_creditCardFields_cardType": "Amex",
+        "dwfrm_billing_creditCardFields_cardNumber": "",
+        "dwfrm_billing_creditCardFields_expirationMonth": "",
+        "dwfrm_billing_creditCardFields_expirationYear": "",
+        "dwfrm_billing_creditCardFields_securityCode": "",
+        "dwfrm_billing_creditCardFields_cardType": "",
         "dwfrm_billing_realtimebanktransfer_iban": "",
         "dwfrm_billing_shippingAddressUseAsBillingAddress": "true",
         "addressSelector": "21867dd2bbe4cf8d84b4e429c3",
         "select": "on",
         "dwfrm_billing_addressFields_country": "US",
-        "dwfrm_billing_addressFields_firstName": "Benjamin",
-        "dwfrm_billing_addressFields_lastName": "Sturisky",
-        "dwfrm_billing_addressFields_address1": "315 Forest Hills drive",
+        "dwfrm_billing_addressFields_firstName": "",
+        "dwfrm_billing_addressFields_lastName": "",
+        "dwfrm_billing_addressFields_address1": "",
         "dwfrm_billing_addressFields_address2": "",
-        "dwfrm_billing_addressFields_city": "Atlanta",
+        "dwfrm_billing_addressFields_city": "",
         "dwfrm_billing_addressFields_states_stateCode": "GA",
-        "dwfrm_billing_addressFields_postalCode": "30342",
-        "dwfrm_billing_addressFields_phone": "404-314-8199",
+        "dwfrm_billing_addressFields_postalCode": "",
+        "dwfrm_billing_addressFields_phone": "",
         "dwfrm_billing_paymentMethod": "CREDIT_CARD",
-        "dwfrm_billing_creditCardFields_cardNumber": "438854007379200",
-        "dwfrm_billing_creditCardFields_expirationMonth": "6",
-        "dwfrm_billing_creditCardFields_expirationYear": "2020",
-        "dwfrm_billing_creditCardFields_securityCode": "645",
-        "dwfrm_billing_creditCardFields_cardType": "Visa",
+        "dwfrm_billing_creditCardFields_cardNumber": "",
+        "dwfrm_billing_creditCardFields_expirationMonth": "",
+        "dwfrm_billing_creditCardFields_expirationYear": "",
+        "dwfrm_billing_creditCardFields_securityCode": "",
+        "dwfrm_billing_creditCardFields_cardType": "",
         "dwfrm_billing_realtimebanktransfer_iban": "",
         "addressId": "new",
         "saveBillingAddr": "false",
@@ -254,9 +252,9 @@ def task(num):
         WEBHOOK_ADDRESS_PARSE = SHIPPING_CONTENT["order"]["items"]["items"][0]["images"]["productDetail"][0]["src"]
         WEBHOOK_PRICE_PARSE = SHIPPING_CONTENT["order"]["items"]["items"][0]["price"]["sales"]["formatted"]
         WEBHOOK_NAME_PARSE = SHIPMENT_SCRAPE_CONTENT["order"]["items"]["items"][0]["productName"]
-        WEBHOOK_URL = DiscordWebhook(url="https://discord.com/api/webhooks/781001274388250656/p_8bOP35K4lQJ5zm2M0Hxs5kdIijdSYSnKpJCXU4Ba3_Ppc19rFShEOGvYRmQfLlJQNp")
+        WEBHOOK_URL = DiscordWebhook(url="")
         embed = DiscordEmbed(title='Fix your info! / Declined.',color=000000)
-        embed.set_footer(text='Cobra')
+        embed.set_footer(text='Your bot')
         embed.set_timestamp()
         embed.add_embed_field(name="Site: ", value="New Balance", inline=False)
         embed.add_embed_field(name="Product: ",value=WEBHOOK_NAME_PARSE, inline=False)
@@ -267,9 +265,3 @@ def task(num):
         response = WEBHOOK_URL.execute()
     else:
         print('issue')
-
-threads = []
-for i in range(5):
-    t = threading.Thread(target=task)
-    threads.append(t)
-    t.start()
