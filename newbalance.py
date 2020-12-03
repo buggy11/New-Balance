@@ -191,7 +191,7 @@ def task(num):
         "dwfrm_billing_addressFields_address1": "",
         "dwfrm_billing_addressFields_address2": "",
         "dwfrm_billing_addressFields_city": "",
-        "dwfrm_billing_addressFields_states_stateCode": "GA",
+        "dwfrm_billing_addressFields_states_stateCode": "",
         "dwfrm_billing_addressFields_postalCode": "",
         "dwfrm_billing_addressFields_phone": "",
         "dwfrm_billing_paymentMethod": "CREDIT_CARD",
