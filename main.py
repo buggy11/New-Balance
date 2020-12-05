@@ -254,7 +254,7 @@ def task():
         WEBHOOK_ADDRESS_PARSE = SHIPPING_CONTENT["order"]["items"]["items"][0]["images"]["productDetail"][0]["src"]
         WEBHOOK_PRICE_PARSE = SHIPPING_CONTENT["order"]["items"]["items"][0]["price"]["sales"]["formatted"]
         WEBHOOK_NAME_PARSE = SHIPMENT_SCRAPE_CONTENT["order"]["items"]["items"][0]["productName"]
-        WEBHOOK_URL = DiscordWebhook(url="https://discord.com/api/webhooks/781001274388250656/p_8bOP35K4lQJ5zm2M0Hxs5kdIijdSYSnKpJCXU4Ba3_Ppc19rFShEOGvYRmQfLlJQNp")
+        WEBHOOK_URL = DiscordWebhook(url="")
         embed = DiscordEmbed(title='Fix your info! / Declined.',color=000000)
         embed.set_footer(text='Cobra')
         embed.set_timestamp()
