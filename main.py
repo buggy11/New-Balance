@@ -92,7 +92,7 @@ def task():
     if atc_content["message"] == "Product added to cart":
         print('added to cart')
     else:
-        logging.debug('issue')
+        print('issue')
 
 
     shipment_scrape_response = session.post(url=shipping_scrape_url,headers=headers_shipping,data=shipping_scrape_data)
